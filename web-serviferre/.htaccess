@@ -3,6 +3,11 @@ ServerSignature Off
 DirectoryIndex index.php
 AddDefaultCharset UTF-8
 
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(src|config|storage|database)(/|$) - [F,L,NC]
+</IfModule>
+
 <FilesMatch "(?i)(^\.|composer\.(json|lock)|package(-lock)?\.json|yarn\.lock|\.sql$|\.ini$|\.log$|\.bak$|\.env$|\.json$)">
     Require all denied
 </FilesMatch>

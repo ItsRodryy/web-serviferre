@@ -1,25 +1,7 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    $isSecureRequest = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
-    $sessionPath = __DIR__ . '/../../storage/sessions';
+require_once(__DIR__ . '/../helpers/security.php');
 
-    if (!is_dir($sessionPath)) {
-        mkdir($sessionPath, 0775, true);
-    }
-
-    if (is_dir($sessionPath) && is_writable($sessionPath)) {
-        session_save_path($sessionPath);
-    }
-
-    session_set_cookie_params([
-        'lifetime' => 0,
-        'path' => '/',
-        'secure' => $isSecureRequest,
-        'httponly' => true,
-        'samesite' => 'Lax',
-    ]);
-    session_start();
-}
+serviferre_start_private_session(__DIR__ . '/../../storage/sessions');
 
 if (empty($_SESSION['contact_csrf'])) {
     $_SESSION['contact_csrf'] = bin2hex(random_bytes(32));

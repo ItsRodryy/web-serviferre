@@ -1,4 +1,8 @@
 <?php
+require_once(__DIR__ . '/../helpers/security.php');
+
+serviferre_send_security_headers();
+
 $currentPage = basename($_SERVER['SCRIPT_NAME']);
 
 if (!function_exists('nav_active')) {
