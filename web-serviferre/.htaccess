@@ -1,0 +1,16 @@
+Options -Indexes -MultiViews
+ServerSignature Off
+DirectoryIndex index.php
+AddDefaultCharset UTF-8
+
+<FilesMatch "(?i)(^\.|composer\.(json|lock)|package(-lock)?\.json|yarn\.lock|\.sql$|\.ini$|\.log$|\.bak$|\.env$|\.json$)">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; form-action 'self' https://api.web3forms.com; frame-ancestors 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; connect-src 'self' https://api.web3forms.com"
+</IfModule>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /config/
+Disallow: /src/
+Disallow: /storage/
+Disallow: /database/

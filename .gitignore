@@ -1,0 +1,7 @@
+/config/mail.php
+/storage/*.json
+/storage/logs/
+/storage/sessions/
+*.log
+*.bak
+*.tmp
